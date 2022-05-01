@@ -266,6 +266,26 @@ class __HeaderState extends State<_Header> {
   }
 }
 
+
+class SecondRoute extends StatelessWidget {
+  const SecondRoute({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, LoginTheme loginTheme) {
+    return Scaffold(
+      
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Navigate back to first route when tapped.
+          },
+          child: const Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}
+
 class FlutterLogin extends StatefulWidget {
   FlutterLogin(
       {Key? key,
@@ -551,7 +571,8 @@ class _FlutterLoginState extends State<FlutterLogin>
           MaterialButton(
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             color: Colors.blue,
-            onPressed: () => authCardKey.currentState!.runLoadingAnimation(),
+            onPressed: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const SecondRoute())),
             child: const Text('LOADING', style: textStyle),
           ),
           MaterialButton(
@@ -571,6 +592,7 @@ class _FlutterLoginState extends State<FlutterLogin>
       ),
     );
   }
+
 
   ThemeData _mergeTheme(
       {required ThemeData theme, required LoginTheme loginTheme}) {
